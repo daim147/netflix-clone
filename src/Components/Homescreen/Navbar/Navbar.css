@@ -18,7 +18,7 @@
 .navbar__logo {
   position: fixed;
   left: 0;
-  top: 10px;
+  top: 25px;
   width: 80px;
   object-fit: cover;
   cursor: pointer;

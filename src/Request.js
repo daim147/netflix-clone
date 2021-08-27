@@ -16,6 +16,11 @@ export const requests = {
     fetchApi: `/discover/movie?api_key=${API_KEY}&with_genres=12`,
     title: "Adventure Movies",
   },
+  netflix: {
+    fetchApi: `/discover/tv?api_key=${API_KEY}&with_networks=213`,
+    title: "NetFlix Originals",
+    isLarge: true,
+  },
   documentries: {
     fetchApi: `/discover/movie?api_key=${API_KEY}&with_genres=99`,
     title: "Documentries",
@@ -51,10 +56,5 @@ export const requests = {
   action: {
     fetchApi: `/discover/movie?api_key=${API_KEY}&with_genres=28`,
     title: "Action Movies",
-  },
-  netflix: {
-    fetchApi: `/discover/tv?api_key=${API_KEY}&with_networks=213`,
-    title: "NetFlix Originals",
-    isLarge: true,
   },
 };

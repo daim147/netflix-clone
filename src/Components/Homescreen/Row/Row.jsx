@@ -1,11 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { api } from "../../../Axios";
-import {
-  motion,
-  AnimateSharedLayout,
-  AnimatePresence,
-  transform,
-} from "framer-motion";
+import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
 import "./Row.css";
 
 const Row = ({ fetchApi, title, isLarge }) => {
@@ -46,7 +41,7 @@ const Row = ({ fetchApi, title, isLarge }) => {
       <div className="row">
         <h2>{title}</h2>
 
-        <div
+        <motion.div
           style={{ transform: `translateX(${translate}px)` }}
           ref={container}
           className="row__posters"
@@ -56,6 +51,8 @@ const Row = ({ fetchApi, title, isLarge }) => {
               ((isLarge && movie.poster_path) ||
                 (!isLarge && movie.backdrop_path)) && (
                 <motion.img
+                  initia={false}
+                  transition={{ duration: 0 }}
                   onClick={() => setIsSelected(movie)}
                   key={movie.id}
                   layoutId={movie.id}
@@ -67,7 +64,7 @@ const Row = ({ fetchApi, title, isLarge }) => {
                 />
               )
           )}
-        </div>
+        </motion.div>
         <div onClick={moveRight} className="icon right__icon">
           <img
             src="https://img.icons8.com/material/50/000000/circled-chevron-right--v1.png"
@@ -98,10 +95,10 @@ const Row = ({ fetchApi, title, isLarge }) => {
                 <motion.h3>Release Date : {isSelected.release_date}</motion.h3>
                 <motion.h4>{isSelected.overview}</motion.h4>
               </motion.div>
-              <motion.img
+              {/* <motion.img
                 className="selected__image2"
                 src={`https://image.tmdb.org/t/p/original/${isSelected.poster_path}`}
-              />
+              /> */}
             </motion.div>
           </motion.div>
         )}
