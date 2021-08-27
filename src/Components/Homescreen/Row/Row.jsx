@@ -35,7 +35,6 @@ const Row = ({ fetchApi, title, isLarge }) => {
     })();
   }, [fetchApi]);
 
-  console.log(isSelected);
   return (
     <AnimateSharedLayout type="crossfade">
       <div className="row">
@@ -95,10 +94,6 @@ const Row = ({ fetchApi, title, isLarge }) => {
                 <motion.h3>Release Date : {isSelected.release_date}</motion.h3>
                 <motion.h4>{isSelected.overview}</motion.h4>
               </motion.div>
-              {/* <motion.img
-                className="selected__image2"
-                src={`https://image.tmdb.org/t/p/original/${isSelected.poster_path}`}
-              /> */}
             </motion.div>
           </motion.div>
         )}

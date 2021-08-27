@@ -11,7 +11,6 @@ const Banner = () => {
   useEffect(() => {
     (async () => {
       const request = await api.get(requests.netflix.fetchApi);
-      console.log(request);
       setMovie(
         request.data.results[
           Math.floor(Math.random() * request.data.results.length - 1)

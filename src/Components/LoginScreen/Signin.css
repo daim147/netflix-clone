@@ -1,0 +1,44 @@
+.signinSrcreen {
+  max-width: 700px;
+  min-width: 300px;
+  padding: 70px;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+.signinSrcreen > form {
+  display: grid;
+  width: 100%;
+}
+.signinSrcreen > form > h1 {
+  text-align: left;
+  margin-bottom: 25px;
+}
+.signinSrcreen > form > h4 {
+  text-align: left;
+  margin-top: 25px;
+}
+.signinSrcreen > form > h4 > span:nth-of-type(1) {
+  color: gray;
+}
+.signinSrcreen > form > h4 > span:nth-of-type(2):hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.signinSrcreen > form > input {
+  height: 40px;
+  outline: none;
+  margin-bottom: 17px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+.signinSrcreen > form > button {
+  color: white;
+  padding: 16px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  outline: none;
+  background-color: #e50914;
+}
