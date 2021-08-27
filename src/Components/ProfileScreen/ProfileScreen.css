@@ -1,5 +1,5 @@
 .profileScreen {
-  height: 100vh;
+  min-height: 100vh;
   color: white;
 }
 .profileScreen__body {
@@ -8,7 +8,7 @@
   min-width: 40%;
   margin: 0 auto;
   padding-top: 8%;
-  padding: 8% 4% 0;
+  padding: 8% 4% 8%;
   max-width: 800px;
 }
 .profileScreen__body > h1 {
@@ -50,5 +50,6 @@
   outline: none;
   cursor: pointer;
   font-weight: 600;
+  cursor: pointer;
   margin-top: 5%;
 }
