@@ -17,10 +17,13 @@ export const userSlice = createSlice({
       state.user = null;
       state.status = "outed";
     },
+    pending: (state) => {
+      state.status = "pending";
+    },
   },
 });
 
-export const { login, logout } = userSlice.actions;
+export const { login, logout, pending } = userSlice.actions;
 
 export const selectUserAuth = (state) => state.userAuth;
 

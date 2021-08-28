@@ -7,9 +7,10 @@ import { auth } from "./Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUserAuth } from "./features/userSlice";
 import ProfileScreen from "./Components/ProfileScreen/ProfileScreen";
+import Spinner from "./Components/Loader";
 
 function App() {
-  const { user } = useSelector(selectUserAuth);
+  const { user, status } = useSelector(selectUserAuth);
   const dispatch = useDispatch();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
@@ -21,6 +22,10 @@ function App() {
     });
     return unsubscribe;
   }, [dispatch]);
+
+  if (status === "pending") {
+    return <Spinner height="100vh" />;
+  }
 
   if (!user) {
     return <LoginScreen />;

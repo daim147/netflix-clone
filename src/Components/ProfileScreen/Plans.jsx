@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectUserAuth } from "../../features/userSlice";
 import { database } from "../../Firebase";
+import Plan from "./Plan";
 import "./Plans.css";
 const Plans = () => {
   const [products, setProducts] = useState([]);
   const [subscribe, setSubscribe] = useState(null);
+  const [loading, setLaoding] = useState(null);
   const { user } = useSelector(selectUserAuth);
   const { uid } = user;
   useEffect(() => {
@@ -26,7 +28,6 @@ const Plans = () => {
         });
       });
   }, [uid]);
-  console.log(subscribe);
   useEffect(() => {
     database
       .collection("products")
@@ -49,7 +50,8 @@ const Plans = () => {
   }, []);
 
   const loadData = async (id) => {
-    console.log("HELO", uid);
+    console.log(id);
+    setLaoding(id);
     const docRef = await database
       .collection("customers")
       .doc(uid)
@@ -63,12 +65,14 @@ const Plans = () => {
       const { error, sessionId } = snap.data();
       if (error) {
         alert("An Error occured" + error.message);
+        setLaoding(null);
       }
       if (sessionId) {
         const stripe = await loadStripe(
           "pk_test_51JT92SSCAPLP3gOzVCs22DgUYSXK19dhvLQcwAsFdFmTgvVCQ47X9qIYQsdfx4ZksV2A8mSOQq4UsHTJEfuSKSuV00C9yGTHMK"
         );
-        stripe.redirectToCheckout({ sessionId });
+        await stripe.redirectToCheckout({ sessionId });
+        setLaoding(null);
       }
     });
   };
@@ -86,18 +90,14 @@ const Plans = () => {
           ?.toLowerCase()
           .includes(subscribe?.role.toLowerCase());
         return (
-          <div key={id} className="plan">
-            <div className="plan__info">
-              <h5>{data.name}</h5>
-              <h6>{data.description}</h6>
-            </div>
-            <button
-              onClick={() => !currentPkg && loadData(data?.prices?.priceId)}
-              className={currentPkg ? "disabled" : ""}
-            >
-              {currentPkg ? "Current Package" : "Subscribe"}
-            </button>
-          </div>
+          <Plan
+            key={id}
+            id={id}
+            data={data}
+            currentPkg={currentPkg}
+            loadData={loadData}
+            loading={loading}
+          />
         );
       })}
     </div>
